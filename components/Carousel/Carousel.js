@@ -17,7 +17,15 @@
     <div class="right-button"> > </div>
   </div>
 */
-const carouselCreator = (info) => {
+const images = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
+
+
+const carouselContainer = document.querySelector('.carousel-container');
+images.forEach(e => {
+  carouselContainer.appendChild(carouselCreator(e));
+});
+
+const carouselCreator = (image) => {
   const carousel = document.createElement('div');
   const leftBtn = document.createElement('div');
   const mountains = document.createElement('img');
@@ -30,22 +38,12 @@ const carouselCreator = (info) => {
   leftBtn.classList.add('left-button');
   rightBtn.classList.add('right-button');
 
-  mountains.src = "./assets/carousel/mountains.jpeg";
-  computer.src = "./assets/carousel/computer.jpeg";
-  trees.src = "./assets/carousel/trees.jpeg";
-  turntable.src = "./assets/carousel/turntable.jpeg";
+  mountains.src = images[0];
+  computer.src = images[1];
+  trees.src = images[2];
+  turntable.src = images[3];
   leftBtn.textContent = '\u25bc';
   rightBtn.textContent = '\u25bc';
-
-  leftBtn.addEventListener("click", () => {
-    articleDiv.classList.toggle('carousel-open');
-    console.log('clicked!')
-  })
-
-  rightBtn.addEventListener("click", () => {
-    articleDiv.classList.toggle('carousel-open');
-    console.log('clicked!')
-  })
 
   carousel.appendChild(leftBtn);
   carousel.appendChild(mountains);
@@ -55,7 +53,6 @@ const carouselCreator = (info) => {
   carousel.appendChild(rightBtn);
 
   return carousel;
+  console.log('carousel here!')
 }
 
-const carouselContainer = document.querySelector('.carousel-container');
-carouselContainer.appendChild(carouselCreator(e));
